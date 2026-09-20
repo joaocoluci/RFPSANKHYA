@@ -1,0 +1,217 @@
+P	Gestão de proposta comercial/orçamentos com versões e aprovações internas	Orçamento nativo (TOP de orçamento) com aprovação por alçadas. Versionamento formal da proposta não é nativo: exige tabela/campos adicionais para histórico de revisões.
+T	Conversão automática da proposta comercial/orçamento em pedido de venda	Conversão nativa do orçamento em pedido pela confirmação com TOP destino, sem redigitação.
+P	Gestão do status do pedido em fase: - Criação: Informado, Pendente de Aprovação, Aprovados - Preparação operacional: Aguardando Analise Financeira, Em Separação, Aguardando Estoque, Em produção, Aguardando Liberação Fiscal, Aguardando Pagamento - Faturamento: Faturado, Faturado Parcialmente, Aguardando Faturamento - Expedição: Em Expedição, Em Transporte, Entregue, Entregue Parcialmente - Encerramento: Aguardando Devolução, Devolvido, Cancelado, Fechado	Status nativos do pedido (pendente, liberado, faturado, cancelado) e liberações por alçada. A granularidade pedida (em separação, aguardando estoque, em produção, em transporte, entrega parcial) exige configuração de TOPs, campos adicionais e regras de transição customizadas.
+T	Controle de pedidos de venda com múltiplas formas de entrega (parcial, fracionada, consignada, programada)	Entrega parcial e fracionada por faturamento parcial, consignação e entrega programada por TOP e previsão de entrega.
+T	Duplicação automática de pedidos, possibilitando informar negociações futuras já firmadas, antecedendo o registro do mesmo.	Duplicação de pedido nativa e registro antecipado com data de previsão de faturamento.
+T	Fluxo de Aprovação de Pedidos parametrizável e multidepartamental: Workflow de aprovação para controle e visibilidade de todas as etapas do pedido	Workflow de aprovação nativo por alçadas (liberação de limites), multinível e multidepartamental, com registro dos aprovadores.
+T	Controle de preços [formação de tabelas] e condições comerciais por hierarquia comercial: cliente/vendedor/segmento (saúde, moveleiro, agro, automação, varejo)	Política comercial nativa: tabelas de preço por parceiro, tipo de negociação, região, segmento e vendedor.
+P	Gestão de Carteira de Clientes e/ou Geografia, possibilitando redistribuição integral e/ou parcial, assim como, divisão de atendimentos [mesmo cliente atendimento por mais de um vendedor em segmentos e/ou familia de produtos e/ou produtos diferentes].	Carteira por vendedor/região e troca em massa são nativas. Divisão do mesmo cliente entre vários vendedores por segmento/família/produto exige customização (tabela de rateio de atendimento e regra na entrada do pedido).
+T	Gestão de Clientes através de agrupamentos com base nos relacionamentos e/ou grupos economicos.	Grupo econômico via matriz/filial de parceiro e grupos de parceiro, com limites e consultas consolidados.
+P	Gestão de Metas por Carteira de Clientes e/ou Geografia e/ou Potencial de Mercado e/ou Valor Pré-definido	Metas nativas por vendedor, produto, período e região. Meta por potencial de mercado exige cadastro e cálculo customizados.
+T	Gestão de Comissões por meta/performance, possibilitando a aplicação de multi-regras de comissionamento	Regras de comissão nativas por faixa, meta, produto, prazo e performance, com múltiplas regras concorrentes.
+P	Integração com e-commerce e marketplaces (B2B2C), através da conexão nativa com lojas virtuais e marketplaces.	API REST nativa e conectores de e-commerce/marketplace pelo ecossistema de parceiros. Não há conexão nativa embarcada por marketplace: depende de hub/middleware de integração.
+T	Gestão de contratos e pedidos recorrentes	Gestão de contratos nativa com faturamento recorrente e geração automática de pedidos/notas.
+T	Gestão da reserva de produtos com base na disponibilidade e/ou estoque, possibilitando restrições com base em limites inferiores e superiores.	Reserva de estoque nativa vinculada ao pedido, com parametrização de limites e bloqueio por disponibilidade.
+T	Bloqueio automático de pedidos por cadastro, crédito/cliente inadimplente	Bloqueio automático por limite de crédito, inadimplência e pendência de cadastro (nativo).
+P	Workflow de aprovação de descontos e definição de alçadas considerando a hierarquia comercial, grupo economico ou relacionamento.	Alçada de desconto por usuário/vendedor e workflow de liberação são nativos. Alçada considerando grupo econômico/relacionamento exige regra customizada.
+P	Gestão da hierarquia comercial com no mínimo 5 níveis: 1) Unidade de Negócio 2) Mercado 3) Canal de Venda 4) Zona de Venda 5) Vendedor	Hierarquia nativa vendedor/supervisor/gerente mais região. Os 5 níveis pedidos (unidade de negócio, mercado, canal, zona, vendedor) exigem estrutura complementar e ajuste nas consultas e relatórios.
+P	Gestão sobre as regras de alocação de receita, garantindo a validação e alocação dos atendimentos nos níveis de: CNPJ <> VENDENDOR <> HIERARQUIA COMERCIAL	Validação CNPJ x vendedor é nativa. Regras de alocação de receita por toda a hierarquia comercial exigem customização da validação e das visões analíticas.
+P	Aplicação de recursos de LLM e/ou IA Generativa, para criação de pedidos e validação de preços e condições gerais	Plataforma de IA nativa com consultas e automações. Criação de pedido e validação de preços por LLM exige configuração do agente e desenvolvimento das regras de negócio.
+P	Aplicação de recursos de LLM e/ou IA Generativa, visando sugestões de consumo de mix de produtos, assim como, produtos substitutos e/ou similares, considerando os perfis de comportamento	Produtos similares/substitutos e sugestão de venda são nativos. Recomendação de mix por perfil de comportamento via IA exige modelo e integração adicionais.
+T	Promoções e Pacotes Customizáveis com a possibilidade da criação de ofertas, descontos progressivos e combos	Promoções, kits/combos e descontos progressivos por faixa de quantidade e valor (nativo).
+P	Portal de parceiro com interface para distribuidores e parceiros acompanharem negociações e pedidos	Portal B2B disponível pela solução de e-commerce integrada. Acompanhamento de negociações pelo distribuidor exige portal customizado ou produto complementar.
+T	Gestão de multiplos funis de vendas (Pipeline) com etapas customizáveis (Prospecção → Qualificação → Negociação → Fechamento)	CRM nativo com múltiplos funis e etapas configuráveis por tipo de oportunidade.
+P	Parametrização e automação do fluxo de mensagens e integrações digitais	Automação por eventos, workflow e alertas é nativa. Fluxo de mensagens em canais digitais (WhatsApp, e-mail marketing) depende de integração com plataforma externa.
+P	Visão 360 do cliente: Histórico completo de interações com clientes na dimensão relacional: e-mails, ligações, visitas e mensagens de texto, integrado ao ERP c/aplicação de recursos de LLM e/ou IA Generativa	Histórico de interações (visitas, ligações, e-mails, anexos) nativo no CRM. Captura automática de mensagens e leitura por LLM exigem integração e configuração de IA.
+P	Visão 360 do cliente: Histórico completo de interações com clientes na dimensão transacional: histórico de vendas, mix de produtos e preços, integrado ao ERP c/aplicação de recursos de LLM e/ou IA Generativa	Histórico transacional 360 é nativo (vendas, mix, preços, títulos). A camada de análise por IA generativa exige configuração do assistente.
+P	Cadastro de leads e oportunidades com pontuação (lead scoring)	Cadastro de leads e oportunidades é nativo. Lead scoring não é nativo: exige campo calculado e regra customizada.
+T	Importação da lista de leads e prospects	Importador de dados nativo para carga de leads e prospects.
+T	Cadastro de Empresas e Contatos integradois ao ERP	Cadastro de empresas e contatos único e integrado ao ERP.
+T	Controle de atividades e agenda da força de vendas (BDR, Inside, Field)	Agenda, atividades e tarefas da força de vendas nativas, por usuário e equipe.
+P	Gestão de carteiras e roteirização de visitas	Carteira e roteiro de visitas são nativos no CRM/força de vendas. Roteirização geográfica otimizada exige integração com serviço de mapas.
+P	Integração com WhatsApp Business, e-mail marketing e chatbots	Integração viável por API e por parceiros do ecossistema. Não há conector nativo embarcado de WhatsApp Business, e-mail marketing ou chatbot.
+T	Geração de forecast de vendas a partir do fluxo de oportunidades	Forecast nativo a partir do funil, com probabilidade por etapa e valor ponderado.
+P	Geração de cotações de preços e/ou proposta comercial integradas ao ERP, com controle de versionamento	Cotação/proposta integrada ao pedido é nativa. Versionamento formal da cotação exige controle customizado.
+T	Gestão de atividades, tarefas e eventos, integrados ao calendário e agenda	Atividades, tarefas e eventos nativos, com agenda integrada e notificações.
+T	Interface mobile para gestão das oportunidades	Aplicativo mobile nativo de força de vendas com gestão de oportunidades e pedidos.
+T	Dashboards pré-definidos e customizáveis (oportunidades, etapas, potenciais de receita, margem)	BI nativo com dashboards padrão e criação livre de indicadores.
+P	Portal de Parceiros com acesso restrito para parceiros acompanharem negociações.	Mesma condição do VEN-22: portal de parceiro exige solução B2B integrada ou desenvolvimento.
+T	Gestão de contas a pagar e a receber com baixa automática e régua de cobrança	Contas a pagar e a receber nativas, com baixa automática por retorno bancário e régua de cobrança parametrizável.
+T	Conciliação bancária automática (OFX de extratos)	Conciliação bancária nativa com importação de extrato OFX/CNAB e conciliação automática.
+T	Gestão de fluxo de caixa projetado	Fluxo de caixa projetado nativo por período, conta e centro de resultado.
+T	Controle de limites de crédito por cliente e grupo econômico	Limite de crédito por parceiro e consolidado por matriz/grupo econômico (nativo).
+T	Baixa automática de títulos (conciliação com o banco)	Baixa automática de títulos por arquivo de retorno bancário (nativo).
+T	Controle de títulos em cobrança e protesto	Controle de títulos em cobrança, cartório/protesto e negativação (nativo).
+T	Gestão de despesas e centro de custos (por unidade de negócio: Linear Brasil, Linear US)	Centro de resultado/custo e rateio de despesas por empresa e unidade de negócio (nativo).
+T	Integração bancária para pagamentos em lote (arquivo remessa)	Geração de remessa e pagamento em lote por CNAB, com múltiplos bancos (nativo).
+T	Controle de provisionamentos (férias, 13º)	Provisões de férias e 13º geradas pelo módulo de Gestão de Pessoas, com integração contábil e financeira. Requer contratação do módulo de folha.
+T	Emissão e gestão de boletos bancários (registro, baixa automática, arquivo CNAB 240/400)	Emissão, registro e baixa de boletos com CNAB 240 e 400 (nativo).
+T	Gestão de múltiplas moedas e câmbio para operações da Linear US e LINEAR BR	Múltiplas moedas e cotações nativas em títulos, pedidos e contabilidade.
+T	Consolidação financeira multiempresa (Linear Brasil + Linear US)	Multiempresa nativo, com consultas e relatórios consolidados.
+T	Orçamento empresarial (budget) com comparação orçado x realizado	Gestão orçamentária nativa com orçado x realizado por conta e centro de resultado.
+T	Antecipação de recebíveis e gestão de recebimentos por cartão de crédito	Gestão de administradoras de cartão e antecipação/desconto de recebíveis por borderô (nativo).
+T	Relatórios gerenciais financeiros (DRE gerencial, EBITDA, indicadores de liquidez)	DRE gerencial configurável e indicadores no BI nativo; EBITDA e índices de liquidez montados na estrutura do DRE.
+T	Fluxo de caixa realizado x projetado	Comparativo de fluxo de caixa realizado x projetado (nativo).
+T	Emissão de NF-e, NFC-e e NFS-e integrada, com contingência automática em caso de indisponibilidade da SEFAZ	Emissão nativa de NF-e, NFC-e e NFS-e, com contingência automática (SVC/offline).
+T	Cálculo automático de ICMS, ICMS-ST, IPI, PIS/COFINS por operação, UF e regime tributário	Motor fiscal nativo com cálculo por operação, UF, NCM, CFOP e regime tributário.
+P	Gestão de regras fiscais por UF/NCM/CFOP com atualização automática das tabelas tributárias	Exceções fiscais por UF/NCM/CFOP são nativas e as regras legais chegam por release. A atualização automática das tabelas tributárias (IBPT/ST) depende de serviço tributário integrado de parceiro.
+T	Escrituração fiscal digital: geração de SPED Fiscal, SPED Contribuições e EFD-Reinf	SPED Fiscal, SPED Contribuições e EFD-Reinf nativos.
+T	Apuração e controle de créditos de ICMS, PIS e COFINS	Apuração e controle de créditos de ICMS, PIS e COFINS (nativo).
+T	Gestão de retenções tributárias (IRRF, INSS, ISS, CSRF) sobre serviços tomados e prestados	Retenções de IRRF, INSS, ISS e CSRF em serviços tomados e prestados (nativo).
+T	Emissão e gestão de CT-e e MDF-e	Emissão e gestão de CT-e e MDF-e (nativo).
+T	Controle de benefícios fiscais e regimes especiais (substituição tributária, incentivos estaduais)	Benefícios fiscais, regimes especiais e substituição tributária tratados por exceção fiscal (nativo).
+P	Gestão de obrigações acessórias (DCTF, ECF) com calendário de vencimentos e alertas	ECD, ECF e obrigações do SPED são nativas. DCTF e o calendário de obrigações com alertas não são nativos: exigem controle customizado ou sistema fiscal complementar.
+T	Suporte à Reforma Tributária (IBS/CBS/Imposto Seletivo) com atualização	Conformidade legal entregue por release; as adequações de IBS, CBS e Imposto Seletivo acompanham o cronograma oficial da reforma tributária.
+T	Gestão fiscal de operações de importação/exportação	Comércio exterior nativo: nota de importação, DI e adições, rateio de despesas aduaneiras e exportação.
+T	Auditoria e validação fiscal prévia, com bloqueio de notas com inconsistência antes da emissão	Validação fiscal prévia com bloqueio da confirmação por regra de negócio (nativo).
+P	Integração com Sintegra e órgãos fiscalizadores estaduais/municipais	Sintegra e comunicação com a SEFAZ são nativos. A NFS-e cobre os principais padrões municipais, mas municípios com leiaute próprio podem exigir homologação e adaptação.
+T	Rastreabilidade fiscal por lote/nota fiscal para devoluções e trocas	Rastreabilidade por lote e vínculo com a nota de origem em devoluções e trocas (nativo).
+T	Relatórios de apuração fiscal consolidada por empresa/filial	Relatórios e livros de apuração fiscal por empresa e filial (nativo).
+T	Entrada de NF-e por XML	Importação de XML de NF-e com geração da nota de entrada (nativo).
+T	Plano de contas contábil parametrizável e integrado aos módulos fiscal, financeiro e suprimentos	Plano de contas parametrizável e integrado aos módulos fiscal, financeiro e suprimentos (nativo).
+T	Contabilização automática de lançamentos a partir de eventos fiscais e financeiros (NF de entrada/saída), financeiros (baixas) e folha de pagamento	Roteiros contábeis nativos: contabilização automática de notas, movimentos financeiros e folha.
+T	Geração de balancetes, Balanço Patrimonial e DRE por empresa, centro de custo e unidade de negócio	Balancete, Balanço Patrimonial e DRE por empresa, centro de resultado e unidade de negócio (nativo).
+P	Consolidação contábil entre Linear Brasil e Linear US com múltiplas moedas e planos de contas	Multiempresa e multimoeda são nativos. Consolidação com plano de contas distinto e conversão para a norma contábil dos EUA exige plano referencial de-para e ajustes customizados.
+T	Conciliação automática entre os módulos Financeiro, Fiscal e Contábil com alertas de divergência	Conciliação contábil x financeira x fiscal nativa, com relatórios de divergência e alertas configuráveis.
+T	Contabilidade por centro de custo e projeto com alocação automática de custos/despesas	Centro de resultado, projeto e rateio automático de custos e despesas (nativo).
+T	Escrituração Contábil Digital (ECD/SPED Contábil) com exportação para o escritório de contabilidade	ECD/SPED Contábil nativo, com exportação para a contabilidade externa.
+T	Controle de rateios e apropriações contábeis entre unidades de negócio	Regras de rateio e apropriação entre unidades de negócio (nativo).
+P	Gestão de encerramento contábil mensal/anual com checklist de fechamento	Encerramento mensal/anual e bloqueio de período são nativos. Checklist de fechamento com responsáveis e status exige customização.
+T	Trilha de auditoria dos lançamentos contábeis (usuário, data, origem)	Trilha de auditoria nativa do lançamento (usuário, data e origem).
+T	Provisões contábeis automáticas (férias, 13º salário, contingências)	Provisões automáticas geradas pela folha e por roteiro contábil (nativo).
+T	Controle contábil de ativo imobilizado integrado à depreciação do módulo Financeiro	Ativo imobilizado nativo, com depreciação integrada à contabilidade e ao financeiro.
+T	Exportação de dados contábeis para escritório de contabilidade terceirizado	Exportação de arquivos contábeis para escritório terceirizado (nativo).
+T	Relatórios de livro razão, livro diário e balancete analítico	Livro razão, livro diário e balancete analítico (nativo).
+P	Gestão de ajustes contábeis com justificativa e aprovação	Lançamento de ajuste com histórico e trilha é nativo. Workflow de aprovação do ajuste exige configuração de liberação ou customização.
+T	Controle de resultados por centro de lucro (unidade de negócio) com comparação orçado x realizado	Resultado por centro de lucro com comparativo orçado x realizado (nativo).
+T	Interface com contabilidade de custos para apropriação de custos industriais	Custo industrial apropriado pela produção e integrado à contabilidade (nativo).
+T	Cadastro de fornecedores nacionais e internacionais com documentação completa	Cadastro único de parceiros com dados fiscais, documentos e anexos, nacional e estrangeiro (nativo).
+T	Cotação eletrônica (RFQ) com comparação de preços e prazos	Cotação eletrônica nativa com mapa comparativo de preços, prazos e condições; portal do fornecedor disponível.
+T	Gestão de compras (ordens de compra, recebimento, devolução)	Ciclo completo nativo: requisição, ordem de compra, recebimento, conferência e devolução.
+T	Controle de lead time por fornecedor (inclusive importação)	Prazo de entrega por fornecedor e produto, com acompanhamento de pedidos em aberto (nativo).
+T	Gestão de contratos de fornecimento	Gestão de contratos nativa aplicada a fornecimento, com vigência, reajuste e saldo.
+P	Avaliação de desempenho de fornecedores (qualidade, prazo)	Os dados de prazo, devolução e qualidade existem e permitem indicadores no BI. A avaliação estruturada do fornecedor (critérios, score e periodicidade) exige customização.
+T	Gestão de importação (incoterms, despesas aduaneiras, câmbio)	Importação nativa com incoterms, câmbio, despesas aduaneiras e rateio no custo.
+T	Gestão de aprovação de compras com alçadas e fluxos de aprovação	Alçadas e workflow de aprovação de requisição e ordem de compra (nativo).
+T	Planejamento de compras com base em histórico e previsão de demanda	Sugestão de compras nativa por histórico, ponto de pedido, estoque mínimo e MRP.
+P	Gestão de contratos de importação	Processo de importação com follow-up é nativo. Contrato de importação e de câmbio com cronograma próprio exige customização.
+T	Painel de indicadores de compras (prazo, qualidade, custo)	Painel de indicadores de compras no BI nativo.
+P	Relacionamento com fornecedores (histórico de negociações, reclamações)	Histórico de negociações no parceiro e no CRM é nativo. Tratamento estruturado de reclamações ao fornecedor exige customização.
+T	Gestão de Ordens de Produção (OP) com apontamento de horas e materiais	Ordem de produção nativa com apontamento de materiais, horas e operações.
+T	Cálculo automático do custo real de produção (material + mão de obra + GGF)	Custo real de produção nativo (matéria-prima, mão de obra e GGF por rateio).
+T	Planejamento de Materiais (MRP) baseado em estoque, pedidos e OP	MRP nativo considerando estoque, pedidos, ordens de produção e parâmetros de reposição.
+T	Gestão de lista de materiais (BOM) com múltiplas versões	Estrutura de produto (BOM) nativa com revisões e estruturas alternativas.
+T	Controle de roteiros de produção (operações, tempos, máquinas)	Roteiro de produção nativo com operações, tempos padrão, recursos e centros de trabalho.
+P	Gestão de qualidade no chão de fábrica (controle de não conformidades, inspeção)	Inspeção e registro de não conformidade existem no controle de qualidade da produção. Gestão completa de qualidade (planos de inspeção, ações corretivas, tratativa 8D) exige customização.
+T	Rastreabilidade de lotes por OP e componentes críticos	Rastreabilidade nativa de lote por ordem de produção, componentes e nota fiscal.
+P	Planejamento de capacidade (carga-máquina)	Programação da produção com capacidade por recurso é nativa. Sequenciamento com capacidade finita e simulação de gargalos exige APS complementar ou customização.
+P	Gestão de MRP II (Manufacturing Resource Planning) com planejamento de capacidade, recursos e materiais integrado	MRP e controle de capacidade são nativos, mas o ciclo MRP II completo (replanejamento integrado de capacidade e recursos) exige parametrização avançada e complemento de APS.
+P	Controle de qualidade estatístico (CEP) e gestão de inspeções por lote/OP com registros de não conformidades e ações corretivas	Inspeções por lote/OP e registro de não conformidade são nativos. CEP (cartas de controle e índices de capabilidade) não é nativo: exige construção no BI ou customização.
+P	Gestão de manutenção de máquinas e equipamentos (planos de manutenção preventiva, corretiva e preditiva)	Ordens de manutenção e planos preventivos são atendidos pelo módulo de manutenção/OS. Manutenção preditiva por sensores exige integração externa.
+P	Planejamento de capacidade produtiva (carga-máquina, simulação de cenários, gargalos) com alertas automáticos	Carga-máquina é nativa. Simulação de cenários e alertas automáticos de gargalo exigem customização e modelagem no BI.
+P	Rastreabilidade total (lote a lote, OP a OP) com rastreio de componentes críticos e registro de parâmetros de produção	Rastreabilidade lote a lote e OP a OP é nativa. Registro de parâmetros de processo por OP exige campos adicionais customizados.
+T	Gestão de sucata e refugo com apropriação de custos e tratamento contábil/fiscal	Apontamento de refugo e perda na OP, com apropriação de custo e tratamento fiscal da sucata (nativo).
+P	Controle de ordens de produção com múltiplos status (liberada, em execução, concluída, cancelada, paralisada) e aprovações	Status nativos da OP (prevista, liberada, em andamento, concluída, cancelada). Paralisação com motivo e workflow de aprovação exigem customização.
+P	Interface com sistemas de automação industrial (CLPs, coletores de dados, sensores) para apontamento automático de produção	Integração com coletores de dados é nativa. CLPs e sensores exigem middleware ou API de integração industrial.
+P	Abertura e acompanhamento de chamados técnicos (garantia, recall)	Abertura e acompanhamento de chamados e ordens de serviço são nativos. Tratamento específico de garantia e recall exige parametrização e campos customizados.
+T	Gestão de troca de produtos e remessas de garantia	Remessa e retorno de garantia e troca por TOPs nativas, com efeito fiscal, de estoque e financeiro.
+P	Controle de peças de reposição com estoque específico e vinculação a produtos/equipamentos	Estoque por local e produto de reposição é nativo. Base instalada (equipamento do cliente x peças aplicáveis) exige cadastro customizado.
+P	Registro de soluções/base de conhecimento técnico	Registro da solução no atendimento é nativo. Base de conhecimento pesquisável exige customização.
+T	Faturamento de serviços técnicos (se aplicável)	Faturamento de serviço nativo a partir da ordem de serviço, com NFS-e e integração financeira.
+P	Gestão de logística reversa com rastreabilidade de produtos devolvidos e decisão de destino (reparo, descarte, recondicionamento)	Devolução e retorno com rastreabilidade são nativos. Decisão de destino (reparo, descarte, recondicionamento) exige fluxo customizado.
+P	Gestão de garantia com controle de prazos, cobertura e abrangência por produto e lote	Controle de prazo e cobertura de garantia por produto e lote não é nativo: exige campos e regras customizados.
+P	Controle de recall com rastreabilidade por lote, notificação automática e gestão de ações corretivas	Rastreabilidade por lote é nativa. Processo de recall (notificação automática e plano de ação corretiva) exige customização.
+T	Gestão de remessas para demonstração com controle de prazos, alertas de vencimento e conversão para pedido de venda	Remessa para demonstração nativa, com controle de prazo, retorno, alerta por agendamento e conversão em pedido de venda.
+T	Interface com CRM para histórico completo de chamados e interações com o cliente	CRM e atendimento compartilham a base do ERP: histórico completo de chamados e interações por cliente (nativo).
+T	Faturamento de serviços técnicos com integração ao módulo fiscal e financeiro	Faturamento de serviços técnicos integrado ao fiscal e ao financeiro (nativo).
+P	Base de conhecimento técnica com busca integrada e anexos (manuais, desenhos, procedimentos)	Anexos de manuais, desenhos e procedimentos são nativos. Busca integrada em base de conhecimento exige customização.
+T	Criação de ordens de serviço com roteiro de execução, alocação de técnicos e apontamento de horas/materiais	Ordem de serviço nativa com roteiro de execução, alocação de técnico e apontamento de horas e materiais.
+P	Controle de SLA de atendimento com alertas e escalonamento automático de chamados	Prazos e alertas são configuráveis. SLA com matriz de escalonamento automático exige customização.
+P	Gestão do ciclo de vida do produto (PLM) integrado ao ERP	Ciclo de vida coberto em parte (cadastro, revisão de estrutura, anexos, descontinuação). PLM completo (ECO/ECR, workflow de engenharia e gestão de arquivos CAD) não é nativo e exige customização ou ferramenta específica.
+T	Cadastro de produtos composta por hierarquia de produtos com no mínimo 4 níveis: Família > Subfamilia > Modelo > SU	Hierarquia de grupos de produto multinível nativa, suportando família, subfamília, modelo e SKU.
+T	Controle de versões de produtos e BOM alternativas (customizações)	Revisão de produto e estruturas alternativas nativas.
+T	Cadastro de especificações técnicas e documentos (manuais, desenhos) anexados ao produto	Anexos e características técnicas no cadastro do produto (nativo).
+P	Workflow de aprovação de novos produtos (Engenharia → Comercial → Produção)	Aprovação de cadastro é configurável por liberação/workflow, mas o fluxo multidepartamental de novos produtos exige parametrização e desenvolvimento.
+P	Gestão de engenharia de aplicação (soluções sob medida) com registro de parâmetros por cliente	Estrutura alternativa e produto configurável atendem parte. Registro de parâmetros dimensionados por cliente exige tabela e tela customizadas.
+P	PLM integrado com gestão de documentos técnicos, desenhos CAD, manuais e especificações anexadas ao produto	Anexo de documentos e desenhos é nativo. Versionamento de arquivos CAD e visualizador não são nativos.
+P	Controle de versões de BOM com histórico de alterações, aprovações e rastreabilidade de mudanças	Revisão de estrutura com histórico é nativa. Aprovação formal da revisão e rastreio da mudança exigem customização.
+P	Gestão de BOM alternativas por cliente/segmento para produtos customizados ou de engenharia de aplicação	Estruturas alternativas são nativas. Seleção automática por cliente ou segmento no pedido exige regra customizada.
+P	Gestão de engenharia de aplicação com registro de parâmetros dimensionados por cliente/projeto e emissão de relatório técnico	Mesma condição do ENG-06: parâmetros por cliente/projeto e relatório técnico exigem desenvolvimento.
+T	Controle de produtos descontinuados e obsoletos com substituição sugerida (cross-reference)	Descontinuação/inativação de produto e cadastro de similares e substitutos (nativo).
+P	Cadastro de especificações técnicas parametrizáveis por cliente (voltagem, curso, força, IP, etc.)	Características de produto são nativas e parametrizáveis. Especificação vinculada ao cliente exige customização.
+T	Importação/exportação de BOM e roteiros entre sistemas	Importação e exportação de estruturas e roteiros pelo importador nativo e pela API.
+T	Cálculo automático de custo de projeto (engenharia de aplicação) com apropriação por cliente/projeto	Custo por projeto e centro de resultado, com apropriação de OP e despesas (nativo).
+T	Integração com módulo de produção para transferência automática de BOM aprovadas	A estrutura aprovada é consumida diretamente pela produção, na mesma base (nativo).
+T	Controle de múltiplos armazéns (Bauru, SC, consignado)	Múltiplos locais e armazéns por empresa e filial (nativo).
+T	Gestão de validade e lote com alertas automáticos de vencimento e bloqueio de produtos vencidos	Controle de lote e validade com bloqueio e alerta de vencimento (nativo).
+T	Controle de remessas para demonstração e consignação (com rastreabilidade)	Remessa para demonstração e consignação com rastreabilidade física e fiscal (nativo).
+T	Endereçamento de produtos (localização dentro do armazém)	Endereçamento de estoque nativo (rua, prédio, nível e apartamento).
+T	Gestão de estoque mínimo e ponto de pedido por item	Estoque mínimo, máximo e ponto de pedido por item e local (nativo).
+P	Interface com coletores de dados e leitores de código de barras/RFID para movimentação em tempo real	Coletores e código de barras são nativos no WMS/mobile. RFID exige integração com o middleware do leitor.
+T	Controle de inventário cíclico e contagem anual	Inventário cíclico e geral com contagem, apuração de divergência e ajuste (nativo).
+P	Gestão de múltiplos armazéns com endereçamento dinâmico e zoneamento (armazenagem, separação, expedição, devolução)	Endereçamento e separação por zona são atendidos pelo WMS. Endereçamento dinâmico com regras automáticas de alocação exige parametrização avançada e customização.
+T	Controle de estoque consignado (em poder do cliente) com rastreabilidade e conciliação automática	Consignação em poder do cliente com acerto e conciliação periódica (nativo).
+P	Controle de estoque de segurança, ponto de pedido e lote econômico por item e local	Estoque de segurança e ponto de pedido são nativos. Cálculo de lote econômico de compra exige customização.
+T	Gestão de inventário cíclico e contagem anual com conciliação automática e geração de ajustes	Inventário cíclico e anual com conciliação e geração automática de ajustes (nativo).
+T	Controle de remessas para demonstração e consignação com rastreabilidade física, lógica e fiscal	Controle físico, lógico e fiscal das remessas de demonstração e consignação (nativo).
+P	Gestão de produtos perigosos e especiais (quando aplicável) com certificações e documentação anexa	Certificações e documentos por produto via anexos e campos adicionais. Controle específico de produto perigoso (número ONU, FISPQ, regras de transporte) exige customização.
+T	Integração com módulo de logística para gestão de separação (picking) e expedição (picking list, roteirização)	WMS nativo integrado: separação (picking), conferência e expedição a partir do pedido.
+P	Gestão de fretes (cotação, contratação, rastreio)	Tabelas de frete e vínculo ao pedido e à nota são nativos. Cotação eletrônica e rastreio junto às transportadoras exigem integração.
+P	Integração com transportadoras (cálculo de frete, etiquetas, rastreamento)	Integração viável pela API. Cálculo de frete, etiqueta e rastreamento por transportadora dependem de conector ou parceiro de integração.
+P	Gestão de manifesto de carga e roteirização	MDF-e e manifesto de carga são nativos. Roteirização de entregas exige solução de roteirização integrada.
+T	Controle de entregas parciais e pendências logísticas	Entrega e faturamento parciais com controle de saldo e pendências (nativo).
+T	Emissão de CT-e e manifesto eletrônico	Emissão de CT-e e MDF-e (nativo).
+T	Gestão de logística reversa (devoluções de clientes, assistência)	Devolução de cliente e retorno de assistência por TOPs nativas, com efeito fiscal, de estoque e financeiro.
+P	Gestão de prazos de entrega e SLA por cliente, região e transportadora, com alertas automáticos de atraso	Previsão de entrega por pedido é nativa. SLA por cliente, região e transportadora com alerta automático de atraso exige customização.
+T	Integração com WMS (módulo de estoque) para gestão da separação (picking), conferência e expedição	WMS e expedição integrados na mesma base do ERP (nativo).
+P	Gestão de custos de frete por pedido, cliente e região, com apropriação automática ao custo do produto ou despesa	Rateio de frete no custo é nativo na entrada. Apropriação e análise de frete por pedido, cliente e região exigem modelagem no BI e customização.
+P	Rastreamento integrado com API de transportadoras e portal do cliente para consulta de status de entrega	Depende de API da transportadora e de portal do cliente: ambos exigem integração e desenvolvimento.
+P	Cadastro de transportadoras com avaliação de performance (pontualidade, avarias, custo) e gestão de contratos	Cadastro de transportadora e contrato são nativos. Avaliação de performance (pontualidade, avaria, custo) exige registro de ocorrências e indicadores customizados.
+T	Emissão e gestão de MDF-e (Manifesto Eletrônico de Documentos Fiscais) para transporte de cargas com múltiplas notas	Emissão e gestão de MDF-e para cargas com múltiplas notas (nativo).
+P	Agendamento de entregas com clientes e transportadoras (janela de horário, confirmação)	Previsão de entrega é nativa. Agendamento com janela de horário e confirmação junto ao cliente/transportadora exige customização.
+P	Painel de indicadores logísticos: OTIF (On-Time In-Full), lead time de entrega, índice de avarias e custo de frete por pedido	O BI nativo permite montar os indicadores, mas OTIF e índice de avaria dependem da captura da data real de entrega e das ocorrências: exige customização.
+T	Gestão de frete internacional (custo de importação, seguro, desembaraço) integrado ao módulo de importação e suprimentos	Custos de importação (frete internacional, seguro e desembaraço) rateados no custo pelo módulo de comércio exterior (nativo).
+P	Interface mobile para motoristas/transportadoras com confirmação de entrega, coletas e registro de ocorrências	Não há aplicativo nativo para motorista. Confirmação de entrega, coleta e registro de ocorrência exigem app complementar ou desenvolvimento sobre a API.
+T	Dashboards pré-definidos e customizáveis (receita, margem, estoque, produção)	BI nativo com dashboards padrão e construção livre de componentes.
+T	Drill-down até o documento original (pedido, NF, OP)	Drill-down nativo até o documento de origem (pedido, nota, OP, título).
+T	Relatórios de análise de rentabilidade por cliente/segmento/produto	Análise de rentabilidade por cliente, segmento e produto no BI nativo.
+T	Painel de KPIs comerciais (pipeline, conversão, forecast)	Indicadores comerciais nativos de pipeline, conversão e forecast.
+T	Relatórios de evolução de custos e margem de contribuição	Evolução de custos e margem de contribuição no BI nativo.
+T	Exportação de dados para ferramentas externas (Power BI, Excel)	Exportação para Excel nativa e consumo pelo Power BI via API/conexão de dados.
+T	Alertas automáticos (estoque baixo, meta não atingida, atraso de entrega)	Alertas e notificações automáticas por regra e agendamento (nativo).
+T	Criação de pivot table para exportação de dados	Tabela dinâmica nativa no BI, com exportação.
+P	Insights Automatizados para identificação de tendências e recomendações baseadas em dados (LLM nativa)	Há recursos nativos de IA e assistente. A geração automática de insights e recomendações exige configuração e pode depender de módulo específico de IA.
+P	Análise Preditiva para a previsão de demanda, tendências de preço e comportamento do cliente	Projeção por histórico é viável no BI. Modelos preditivos de demanda, preço e comportamento exigem ferramenta analítica externa ou desenvolvimento.
+T	Interface mobile para acesso a indicadores em tempo real via smartphones	Aplicativo mobile nativo com indicadores e dashboards em tempo real.
+T	Arquitetura em nuvem (SaaS) com SLA de disponibilidade ≥99,5% e garantia contratual de uptime	Oferta SaaS em nuvem com SLA contratual de disponibilidade.
+T	Acesso multiplataforma (web, desktop, iOS/Android)	Acesso web nativo e aplicativos iOS e Android.
+T	Controle de acesso por perfil de usuário (LGPD)	Perfis, papéis e permissões por usuário e grupo (nativo).
+T	Backup automático diário com retenção de 30 dias	Rotina de backup diário com política de retenção no ambiente cloud.
+T	API aberta para integração com sistemas legados (CRM, e-commerce, softwares de automação)	API REST aberta e documentada, com autenticação por token (nativo).
+T	Suporte a múltiplas empresas/unidades de negócio (Linear Brasil, Linear US)	Multiempresa e multifilial nativos na mesma base.
+T	Auditoria de alterações (log de usuário)	Log de auditoria nativo por usuário, tela e registro.
+T	Possibilidade de customização por scripts sem comprometer atualizações	Camada própria de customização (Addon Studio e eventos programáveis) preservada nas atualizações de versão.
+P	Acesso multiplataforma (web, desktop, iOS/Android) com experiência nativa	Web responsivo e aplicativos nativos para vendas, aprovações e BI. Nem toda rotina do ERP tem equivalente no aplicativo.
+T	Controle de acesso por perfil de usuário com concessão de permissões granulares (LGPD)	Permissões granulares por tela, campo, ação e registro (nativo).
+T	Backup automático diário com retenção de 30 dias e possibilidade de restauração por demanda	Backup diário com restauração sob demanda conforme contrato de cloud.
+T	API aberta (REST/SOAP) para integração com sistemas legados (CRM, e-commerce, automação, ferramentas de BI)	APIs REST e SOAP nativas para integração.
+P	Suporte a múltiplas empresas/unidades de negócio (Linear Brasil, Linear US) com consolidação e eliminação de duplicidades	Multiempresa e consolidação são nativos. A eliminação de operações intercompany na consolidação exige parametrização e ajustes customizados.
+T	Auditoria de alterações (log de usuário) com registro de data, hora, campo e valor anterior/novo	Auditoria nativa com data, hora, usuário, campo e valores anterior e novo.
+T	Possibilidade de customização (scripts, add-ons) sem comprometer atualizações e compatibilidade	Addons e scripts ficam em camada separada, compatível com o ciclo de atualização.
+T	Autenticação em dois fatores (2FA) e políticas de segurança de senha (LGPD)	Autenticação com 2FA/MFA e políticas de senha (nativo).
+P	Conformidade com LGPD: anonimização de dados, consentimento, direito de exclusão, portabilidade	Controle de acesso, mascaramento/anonimização e trilha de auditoria cobrem boa parte da LGPD. Consentimento, portabilidade e exclusão sob demanda exigem processo definido e customização.
+P	Integração com ferramentas de automação (Zapier, Make) ou plataformas de integração (Celonis, MuleSoft)	Integração viável pela API REST. Não há conector pronto para Zapier, Make, Celonis ou MuleSoft.
+T	Infraestrutura escalável com capacidade de aumento de usuários, transações e módulos sem interrupção	Arquitetura escalável em nuvem, com ampliação de usuários, transações e módulos sem interrupção.
+T	Formação de Preço com Base em Custo com cálculo automático do preço de venda a partir do custo do produto (matéria-prima + mão de obra + custos indiretos), aplicando mark-up ou margem desejada.	Formação de preço de venda nativa a partir do custo, com markup, margem desejada, impostos e despesas.
+P	Gestão de markup por tipo de cliente, permitindo a definição de markup diferenciado por cliente ou grupo econômico, com regras de aprovação para exceções. a) Markup: parâmetros como margem desejada, despesas fixas e variáveis, impostos, comissões e fretes, com possibilidade de aplicação por produto, família, cliente, segmento ou canal; b) Formação de custos: estrutura parametrizável para apropriação de custos diretos (matéria-prima, mão de obra direta), indiretos (GGF, depreciação, manutenção) e despesas variáveis, com suporte a diferentes métodos de rateio; c) Simulação de cenários: visualização do impacto de alterações nos parâmetros de markup ou custos sobre a margem final antes da emissão de orçamentos; d) Rastreabilidade: registro de alterações nos parâmetros de markup e custos (quem alterou, quando e justificativa).	Markup por produto, família, segmento e canal é nativo, assim como a composição de custos e a margem no pedido. Markup por cliente/grupo econômico com exceção aprovada e simulação comparativa exige customização.
+P	Registro de versões de markup e custos, com histórico completo de alterações e aprovações, garantindo auditoria e rastreabilidade para decisões de precificação.	Histórico e auditoria das alterações de preço e parâmetros são nativos. Versionamento formal de markup e custos com aprovação exige customização.
+T	Definir e paramentrizar as políticas de desconto (por volume, por prazo, promocionais) com workflow de aprovação	Políticas de desconto por volume, prazo e promoção, com alçada e workflow de aprovação (nativo).
+T	Realizar simulações de preço e margem para visualização do impacto de diferentes preços na margem de contribuição antes da emissão do orçamento.	Margem calculada em tempo real no orçamento e no pedido, permitindo simular preço antes da confirmação.
+T	Controle do histórico de preços praticados por cliente, através do registro dos preços praticados em negociações e pedidos anteriores.	Histórico de preços praticados por cliente e último preço de venda (nativo).
+N	Controle e monitoramento dos preços praticamos no mercado com integração com Inteligência de Mercado, para alimentação automática de preços com base em dados de concorrência e tendências setoriais	O ERP não coleta nem mantém preços de concorrência. Atender exigiria contratar provedor externo de inteligência de mercado; está fora do escopo do produto, mesmo com customização.
+T	Precificação por Segmento e Canal, possibilitando a formação de Preços diferenciados para B2B, varejo, exportação e importação dedicada.	Tabelas de preço por segmento, canal e tipo de negociação, inclusive exportação e importação (nativo).
+P	Análise de Eslaticidade, possibilitando a simulação do impacto de variações de custo ou preço na margem e na demanda.	Simulação do impacto de custo e preço na margem é nativa. Elasticidade em relação à demanda exige modelo estatístico construído fora do padrão do produto.
+P	Precificação dinâmica para aplicação de ajuste automático de preços com base em concorrência, demanda e sazonalidade.	Reajuste automático por regra, faixa e sazonalidade é configurável. Precificação dinâmica baseada em concorrência depende de dado externo e desenvolvimento.
+T	Painel de Acompanhamento de Margem por Produto/Cliente com visão consolidada da evolução da margem ao longo do tempo	Painel de margem por produto e cliente, com evolução no tempo, no BI nativo.
+T	Gestão de preços por unidade de negócio (Linear Brasil, Linear US, INNA)	Tabelas de preço por empresa e unidade de negócio (nativo).
+P	Simulação de impacto de alteração de preços na margem consolidada	Simulação por tabela e por pedido é nativa. Impacto na margem consolidada entre unidades de negócio exige modelagem adicional no BI.
