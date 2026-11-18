@@ -6,6 +6,8 @@ description: >
   Word, com layout variável. Acionar para "preencher a RFP", "responder RFP", "matriz de
   requisitos do cliente", "checklist de aderência", "questionário de seleção de ERP",
   "responder o edital de ERP", ou quando o usuário apontar uma pasta/arquivo de RFP.
+  Só quando o usuário pedir, indica também o PACK Sankhya (nº, nome, horas, dependência) de
+  cada requisito — "qual pack", "incluir os packs", "composição de packs".
   Não usar para escopo de customização, orçamento de horas ou backlog.
 ---
 
@@ -26,8 +28,13 @@ python $P cache   "<arquivo>" resp.tsv             # alimenta o cache p/ próxim
 
 1. `extract` — gera `auto.tsv` (respostas reaproveitadas do cache) e imprime `id|prioridade|requisito`
    só do que ficou pendente. Se vier `total=0` ou o bloco errado, rode `scan` e repasse `--map`.
-2. Se houver pendentes, ler `references/sankhya-cobertura.md` e classificar cada um.
-3. Escrever `resp.tsv` numa única chamada Write: `id⇥T|P|N⇥justificativa`.
+2. Se houver pendentes, ler `references/sankhya-cobertura.md` e classificar cada um. Requisito que
+   a cobertura não resolve com segurança → consultar a base local (MCP `sankhya-rag`
+   `buscar_conhecimento`, ou `python "C:/Users/joao.filho_sankhya/Documents/SATORI/DOCUMENTACAO/RAG/busca.py" "<requisito>" --limite 4`),
+   no máximo 2 buscas por requisito, só para os duvidosos. Trecho do help descreve o recurso → T e
+   a justificativa usa o nome do recurso do artigo; nada encontrado não vira T por suposição.
+3. Escrever `resp.tsv` numa única chamada Write: `id⇥T|P|N⇥justificativa`. RFP padrão = 3 campos,
+   sem packs. O 4º campo (packs) só entra quando o usuário pedir — ver **Indicação de PACK**.
 4. `apply` — imprime contagem, itens sem resposta e a lista de **Obrigatórios que não ficaram
    Total** (risco de desclassificação). Não reabrir o arquivo para conferir.
 5. `cache` — só depois do usuário validar as respostas.
@@ -44,6 +51,26 @@ python $P cache   "<arquivo>" resp.tsv             # alimenta o cache p/ próxim
 
 Justificativa: 1–2 frases, até ~220 caracteres, no formato *"<o que é nativo>. <o que falta e
 qual customização/integração cobre>."* Não repetir o texto do requisito nem prometer prazo.
+
+## Indicação de PACK
+
+**Só quando o usuário pedir explicitamente** ("incluir os packs", "qual pack atende"). RFP padrão
+não leva pack: não ler a base, não criar a coluna, não citar pack na justificativa nem na
+proposta — mesmo que a RFP tenha campo de módulo/produto (nesse caso, perguntar ao usuário).
+
+Base: `references/packs-sankhya.md` (catálogo da planilha *Horas por Produto - Engenharia de
+Valor*). Ler primeiro o "Mapa requisito típico → pack"; só buscar no catálogo (Grep pelo
+termo, não Read inteiro) o que o mapa não cobrir.
+
+- Pack vai no **4º campo do `resp.tsv`** (coluna própria), nunca dentro da justificativa.
+- Formato: `<nº> <nome>; <nº> <nome>` separados por `;`, incluindo o pré-requisito da coluna
+  **Depende de** e marcando `opcional:` / `alternativa:` quando for o caso.
+- Pack do ERP → Total; SOP → Parcial (produto complementar); parceiro do ecossistema → Terceiro/Parcial.
+- Implantação: somar as **Horas** dos packs escolhidos e informar como base, sem customização
+  e migração.
+- Preço: Setup/MRR são lista de referência. Não preencher valor da RFP com eles sem o usuário
+  pedir; se pedir, marcar como "referência de lista, sujeito a validação comercial".
+- Requisito sem pack no catálogo → não inventar número.
 
 ## Layouts fora do padrão
 
@@ -62,3 +89,9 @@ qual customização/integração cobre>."* Não repetir o texto do requisito nem
 - Nunca reabrir a saída para validar: `apply` já reporta contagem, faltantes e riscos.
 - Um único Write para o `resp.tsv`; nada de editar item a item.
 - O cache (`cache/respostas.tsv`) cresce a cada RFP e derruba o volume de pendentes das próximas.
+
+## Atualização da base de packs
+
+Planilha nova de Engenharia de Valor → `python scripts/packs.py "<planilha>"`. Regera o catálogo
+e mantém o cabeçalho manual (regras e mapa) do `packs-sankhya.md`; revisar o mapa se surgirem
+packs ou números novos.

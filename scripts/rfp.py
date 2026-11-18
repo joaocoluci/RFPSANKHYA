@@ -27,10 +27,10 @@ CLASSES = {"T": "Total", "P": "Parcial", "N": "Não Atende"}
 SUFIXO = " - RESPOSTA SANKHYA"
 
 RE_ID = re.compile(r"^(id|c[oó]d|item|n[uú]m|ref)", re.I)
-RE_REQ = re.compile(r"(requisito|descri|funcionalidade|necessidade|especifica)", re.I)
+RE_REQ = re.compile(r"(capacidade|requisito|descri|funcionalidade|necessidade|especifica)", re.I)
 RE_PRIO = re.compile(r"(prioridade|criticidade|peso|obrigat)", re.I)
 RE_ATEND = re.compile(r"(atendimento|atende|aderenc|aderênc|resposta|situa|status|conformidade)", re.I)
-RE_JUST = re.compile(r"(justificativ|observa|coment|motivo|customiza|evid)", re.I)
+RE_JUST = re.compile(r"(solu[cç]|justificativ|observa|coment|motivo|customiza|evid)", re.I)
 STOP = set("""a o e de da do das dos para por com sem em no na nos nas um uma os as ao aos que
 ser sao são ter tem the of and com base atraves através partir possibilitando permitindo""".split())
 
@@ -283,30 +283,41 @@ def aplicar_xlsx(origem, destino, tabela, respostas, rotulos):
         itens = [(i, z.read(i.filename)) for i in z.infolist()]
 
     c_at, c_ju = tabela.colunas["atend"], tabela.colunas["just"]
+    c_pk = c_ju + 1 if any(r[2] for r in respostas.values()) else None
     porlinha = {num: (ident, prio) for num, ident, _, prio in tabela.linhas}
 
     def transformar(linha_xml):
         num = int(re.search(r'<row r="(\d+)"', linha_xml).group(1))
-        if num == tabela.cabecalho and tabela.criar_just:
+        if num == tabela.cabecalho:
             est = estilo_de(linha_xml, c_at)
-            return gravar_celula(linha_xml, num, c_ju, "JUSTIFICATIVA / CUSTOMIZAÇÃO NECESSÁRIA", est)
+            if tabela.criar_just:
+                linha_xml = gravar_celula(linha_xml, num, c_ju, "JUSTIFICATIVA / CUSTOMIZAÇÃO NECESSÁRIA", est)
+            if c_pk is not None:
+                linha_xml = gravar_celula(linha_xml, num, c_pk, "PACKS SANKHYA", est)
+            return linha_xml
         if num not in porlinha:
             return linha_xml
         ident = porlinha[num][0]
         if ident not in respostas:
             return linha_xml
-        classe, just = respostas[ident]
+        classe, just, packs = respostas[ident]
         est_at = estilo_de(linha_xml, c_at) or estilo_de(linha_xml, tabela.colunas.get("prio", c_at))
         est_ju = estilo_de(linha_xml, tabela.colunas.get("req", c_ju)) or est_at
         linha_xml = gravar_celula(linha_xml, num, c_at, rotulos[classe], est_at)
-        return gravar_celula(linha_xml, num, c_ju, just, est_ju)
+        linha_xml = gravar_celula(linha_xml, num, c_ju, just, est_ju)
+        if c_pk is not None and packs:
+            linha_xml = gravar_celula(linha_xml, num, c_pk, packs, est_ju)
+        return linha_xml
 
     def ajustar(xml):
+        ultima = c_ju if c_pk is None else c_pk
         xml = re.sub(r'\sspans="[^"]*"', "", xml)
         xml = re.sub(r'<dimension ref="([A-Z]+\d+):[A-Z]+(\d+)"/>',
-                     lambda m: '<dimension ref="%s:%s%s"/>' % (m.group(1), letra(c_ju), m.group(2)), xml)
+                     lambda m: '<dimension ref="%s:%s%s"/>' % (m.group(1), letra(ultima), m.group(2)), xml)
         if tabela.criar_just:
             xml = ajustar_cols(xml, c_ju)
+        if c_pk is not None:
+            xml = ajustar_cols(xml, c_pk, 60)
         padrao = r'<row r="\d+"[^>]*/>|<row r="\d+".*?</row>'
         return re.sub(padrao, lambda m: transformar(m.group(0)), xml, flags=re.S)
 
@@ -352,7 +363,7 @@ def aplicar_docx(origem, destino, tabela, respostas, rotulos):
     for num, ident, _, _ in tabela.linhas:
         if ident not in respostas:
             continue
-        classe, just = respostas[ident]
+        classe, just = respostas[ident][:2]
         cel = tb.rows[num].cells
         escrever(cel[c_at], rotulos[classe], cel[tabela.colunas.get("req", c_at)].paragraphs[0])
         escrever(cel[c_ju], just, cel[tabela.colunas.get("req", c_ju)].paragraphs[0])
@@ -409,7 +420,8 @@ def cmd_apply(args):
             for linha in fp:
                 partes = linha.rstrip("\n").split("\t")
                 if len(partes) >= 3 and partes[1].upper() in CLASSES:
-                    respostas[partes[0].strip()] = (partes[1].upper(), partes[2])
+                    packs = partes[3].strip() if len(partes) > 3 else ""
+                    respostas[partes[0].strip()] = (partes[1].upper(), partes[2], packs)
     rotulos = dict(CLASSES)
     origem_rot = args.rotulos.split("|") if args.rotulos else tabela.rotulos
     if len(origem_rot) >= 3:
